@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class HistoryItem(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val bin: String,
-    val data: BinResponse
+    val data: BinDomainModel
 )
