@@ -30,4 +30,8 @@ class HistoryViewModel(
             }
         }
     }
+
+    fun refreshHistory(){
+        loadHistory()
+    }
 }
