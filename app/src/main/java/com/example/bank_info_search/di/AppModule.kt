@@ -1,14 +1,14 @@
 package com.example.bank_info_search.di
 
 import androidx.room.Room
-import com.example.bank_info_search.data.AppDatabase
-import com.example.bank_info_search.data.BinRepositoryImpl
-import com.example.bank_info_search.domain.BinRepository
+import com.example.bank_info_search.data.db.AppDatabase
+import com.example.bank_info_search.data.repo.BinRepositoryImpl
+import com.example.bank_info_search.data.repo.BinRepository
 import com.example.bank_info_search.domain.useCases.GetBinDetailsUseCase
 import com.example.bank_info_search.domain.useCases.GetHistoryUseCase
 import com.example.bank_info_search.presentation.viewmodel.HistoryViewModel
 import com.example.bank_info_search.presentation.viewmodel.MainViewModel
-import com.example.bank_info_search.utils.RetrofitClient
+import com.example.bank_info_search.domain.network.RetrofitClient
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
