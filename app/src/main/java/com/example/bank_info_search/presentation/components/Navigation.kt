@@ -51,7 +51,7 @@ fun AppNavigation(
             }
             composable(Screen.History.route) {
                 LaunchedEffect(Unit) {
-                    historyViewModel.refreshHistory() 
+                    historyViewModel.refreshHistory()
                 }
                 HistoryScreen(viewModel = historyViewModel)
             }
