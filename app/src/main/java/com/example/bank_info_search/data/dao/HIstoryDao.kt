@@ -1,4 +1,4 @@
-package com.example.bank_info_search.data
+package com.example.bank_info_search.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

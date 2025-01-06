@@ -1,13 +1,12 @@
-package com.example.bank_info_search.data
+package com.example.bank_info_search.data.repo
 
 import android.util.Log
-import com.example.bank_info_search.data.models.BinResponse
+import com.example.bank_info_search.data.dao.HistoryDao
 import com.example.bank_info_search.data.models.HistoryItem
-import com.example.bank_info_search.domain.BankInfo
-import com.example.bank_info_search.domain.BinDomainModel
-import com.example.bank_info_search.domain.BinRepository
-import com.example.bank_info_search.domain.CountryInfo
-import com.example.bank_info_search.domain.NumberInfo
+import com.example.bank_info_search.data.models.BankInfo
+import com.example.bank_info_search.data.models.BinDomainModel
+import com.example.bank_info_search.data.models.CountryInfo
+import com.example.bank_info_search.data.models.NumberInfo
 import com.example.bank_info_search.domain.network.ApiService
 import kotlinx.coroutines.delay
 
@@ -15,6 +14,7 @@ class BinRepositoryImpl(
     private val apiService: ApiService,
     private val historyDao: HistoryDao
 ) : BinRepository {
+
     override suspend fun getBinDetails(bin: String): BinDomainModel {
         var retryCount = 0
         val maxRetryAttempts = 3
@@ -23,11 +23,10 @@ class BinRepositoryImpl(
         while (true) {
             try {
                 val response = apiService.getBinDetails(bin)
-                Log.d("request","${response}")
-                historyDao.insertHistory(HistoryItem(bin = bin, data = response))
+                Log.d("request", "$response")
+                historyDao.insertHistory(HistoryItem(bin = bin, data = response)) // Сохраняем BIN
                 return response.toDomainModel()
             } catch (e: retrofit2.HttpException) {
-                //слишком много запросов
                 if (e.code() == 429 && retryCount < maxRetryAttempts) {
                     retryCount++
                     delay(delayTimeMillis)
@@ -39,18 +38,18 @@ class BinRepositoryImpl(
     }
 
 
-    override suspend fun getHistory(): List<BinDomainModel> {
-        return historyDao.getAllHistory().map { historyItem ->
-            historyItem.data.toDomainModel()
-        }
+
+    override suspend fun getHistory(): List<HistoryItem> {
+        return historyDao.getAllHistory() // Вернем `HistoryItem` напрямую
     }
 
-    private fun BinResponse.toDomainModel(): BinDomainModel {
+
+    fun BinDomainModel.toDomainModel(): BinDomainModel {
         return BinDomainModel(
             number = this.number?.let {
                 NumberInfo(
-                    length = this.number.length,
-                    luhn = this.number.luhn,
+                    length = it.length,
+                    luhn = it.luhn
                 )
             },
             scheme = this.scheme,
@@ -65,7 +64,7 @@ class BinRepositoryImpl(
                     emoji = it.emoji,
                     currency = it.currency,
                     latitude = it.latitude,
-                    longitude = it.longitude,
+                    longitude = it.longitude
                 )
             },
             bank = this.bank?.let {
@@ -78,4 +77,5 @@ class BinRepositoryImpl(
             }
         )
     }
+
 }

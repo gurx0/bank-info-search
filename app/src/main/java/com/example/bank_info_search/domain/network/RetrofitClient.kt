@@ -1,6 +1,5 @@
-package com.example.bank_info_search.utils
+package com.example.bank_info_search.domain.network
 
-import com.example.bank_info_search.domain.network.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
