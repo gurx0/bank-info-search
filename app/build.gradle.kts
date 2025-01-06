@@ -57,7 +57,7 @@ dependencies {
     implementation (libs.gson.v287)
     implementation (libs.converter.gson)
 //    implementation (libs.koin.androidx.viewmodel)
-
+    implementation (libs.accompanist.navigation.animation)
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testImplementation (libs.junit.jupiter.engine)
     testImplementation (libs.mockwebserver)
