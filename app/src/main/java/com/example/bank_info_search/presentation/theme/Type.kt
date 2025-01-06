@@ -1,4 +1,4 @@
-package com.example.bank_info_search.ui.theme
+package com.example.bank_info_search.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
