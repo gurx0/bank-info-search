@@ -81,6 +81,7 @@ fun HistoryListItem(
 
 @Composable
 fun ExpandedDetails(binResponse: BinDomainModel) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier.padding(top = 8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -95,26 +96,41 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
             Text("Brand: $it", style = MaterialTheme.typography.bodyMedium)
         }
         binResponse.country?.let { country ->
-            Text("Country: ${country.name}", style = MaterialTheme.typography.bodyMedium, modifier = Modifier.clickable { /* todo добавить реализацию*/}
+            Text(
+                "Country: ${country.name}", style = MaterialTheme.typography.bodyMedium, modifier = Modifier.clickable { /* todo добавить реализацию*/}
             )
             Text(
                 "Coordinates: ${country.latitude}, ${country.longitude}",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.clickable {
+                    val uri = Uri.parse("geo:${country.latitude},${country.longitude}")
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    context.startActivity(intent)
+                }
             )
         }
         binResponse.bank?.let { bank ->
+
             Text("Bank: ${bank.name}", style = MaterialTheme.typography.bodyMedium)
             Text(
                 "Website: ${bank.url}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable { /* todo добавить реализацию*/}
+                modifier = Modifier.clickable {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://${bank.url}"))
+                    context.startActivity(intent)
+                }
             )
+
             Text(
                 "Phone: ${bank.phone}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable { /* todo добавить реализацию*/}
+                modifier = Modifier.clickable {
+                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${bank.phone}"))
+                    context.startActivity(intent)
+                }
             )
         }
     }
