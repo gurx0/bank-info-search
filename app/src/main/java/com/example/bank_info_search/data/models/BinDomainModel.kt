@@ -1,7 +1,4 @@
-package com.example.bank_info_search.domain
-
-//датакласс, в который преобрзуются полученные данные для дальнейших операций
-//не зависит от модели респонса
+package com.example.bank_info_search.data.models
 
 data class BinDomainModel(
     val number: NumberInfo?,
