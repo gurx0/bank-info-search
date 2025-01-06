@@ -1,16 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id ("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.bank_info_search"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.bank_info_search"
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -45,11 +46,35 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+
         }
     }
 }
 
 dependencies {
+    //noinspection KaptUsageInsteadOfKsp
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.gson.v287)
+    implementation (libs.converter.gson)
+//    implementation (libs.koin.androidx.viewmodel)
+
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.1")
+    testImplementation (libs.junit.jupiter.engine)
+    testImplementation (libs.mockwebserver)
+    testImplementation (libs.retrofit2.retrofit)
+    testImplementation (libs.converter.gson)
+
+
+    implementation(libs.androidx.room.ktx)
+    implementation (libs.retrofit2.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.gson)
+    implementation (libs.androidx.navigation.compose)
+    implementation (libs.kotlinx.coroutines.android)
+    implementation (libs.koin.android)
+    implementation (libs.koin.androidx.compose)
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -59,6 +84,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.room.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
