@@ -66,13 +66,13 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "Country: ${details.country?.name}",
+                    text = "Country: ${details.country?.name?: "-"}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
                 Text(
-                    text = "Coordinates: ${details.country?.latitude}, ${details.country?.longitude}",
+                    text = "Coordinates: ${details.country?.latitude?: "-"}, ${details.country?.longitude?: "-"}",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -82,7 +82,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                         Text(
                             text = "Open in Maps",
                             modifier = Modifier.clickable {
-                                val uri = Uri.parse("geo:${country.latitude},${country.longitude}")
+                                val uri = Uri.parse("geo:${country.latitude?: "-"},${country.longitude?: "-"}")
                                 val intent = Intent(Intent.ACTION_VIEW, uri)
                                 context.startActivity(intent)
                             },
@@ -94,7 +94,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
 
                 details.bank?.let { bank ->
                     Text(
-                        text = "Bank Website: ${bank.url}",
+                        text = "Bank Website: ${bank.url?: "-"}",
                         modifier = Modifier.clickable {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://${bank.url}"))
                             context.startActivity(intent)
@@ -104,7 +104,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                     )
 
                     Text(
-                        text = "Call Bank: ${bank.phone}",
+                        text = "Call Bank: ${bank.phone?: "-"}",
                         modifier = Modifier.clickable {
                             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${bank.phone}"))
                             context.startActivity(intent)

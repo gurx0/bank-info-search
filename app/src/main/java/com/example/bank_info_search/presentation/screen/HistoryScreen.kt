@@ -95,10 +95,10 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
         }
         binResponse.country?.let { country ->
             Text(
-                "Country: ${country.name}", style = MaterialTheme.typography.bodyMedium, modifier = Modifier.clickable { /* todo добавить реализацию*/}
+                "Country: ${country.name?: "-"}", style = MaterialTheme.typography.bodyMedium,
             )
             Text(
-                "Coordinates: ${country.latitude}, ${country.longitude}",
+                "Coordinates: ${country.latitude?: "-"}, ${country.longitude?: "-"}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
@@ -110,9 +110,9 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
         }
         binResponse.bank?.let { bank ->
 
-            Text("Bank: ${bank.name}", style = MaterialTheme.typography.bodyMedium)
+            Text("Bank: ${bank.name?: "-"}", style = MaterialTheme.typography.bodyMedium)
             Text(
-                "Website: ${bank.url}",
+                "Website: ${bank.url?: "-"}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
@@ -122,7 +122,7 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
             )
 
             Text(
-                "Phone: ${bank.phone}",
+                "Phone: ${bank.phone?: "-"}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
