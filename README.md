@@ -37,7 +37,8 @@
 ---
 
 ## Скриншоты
-https://github.com/gurx0/bank-info-search/blob/assets/screenshots/p1.jpg
+![Settings Window](https://raw.github.com/gurx0/bank-info-search/blob/assets/screenshots/p1.jpg)
+https://github.com/gurx0/bank-info-search/assets/screenshots/p1.jpg
 ![alt text](https://raw.githubusercontent.com/gurx0/bank-info-search/blob/assets/screenshots/p1.jpg)
 ![alt text](https://raw.githubusercontent.com/gurh0/bank-info-search/caf5ae68/p2.png)
 ---
