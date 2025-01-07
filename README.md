@@ -43,8 +43,8 @@
 ---
 
 ## Скриншоты
-![Settings Window](https://raw.github.com/gurx0/bank-info-search/assets/screenshots/p1.jpg) ![Settings Window](https://raw.github.com/gurx0/bank-info-search/assets/screenshots/p2.jpg)
-
+![Settings Window](https://raw.github.com/gurx0/bank-info-search/assets/screenshots/p1.jpg) 
+![Settings Window](https://raw.github.com/gurx0/bank-info-search/assets/screenshots/p2.jpg)
 ---
 
 ## Установка и запуск
