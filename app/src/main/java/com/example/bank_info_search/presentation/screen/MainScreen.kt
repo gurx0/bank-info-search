@@ -11,7 +11,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -42,7 +41,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
         OutlinedTextField(
             value = uiState.binInput,
             onValueChange = viewModel::onBinInputChange,
-            label = { Text("Enter BIN") },
+            label = { Text("Введите BIN 6-8 символов") },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp)
         )
@@ -56,7 +55,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                 .height(50.dp),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text("Get Details")
+            Text("Получить данные")
         }
 
         Spacer(modifier = Modifier.height(24.dp))
