@@ -1,4 +1,4 @@
-package com.example.bank_info_search.di
+package com.example.bank_info_search.domain.di
 
 import androidx.room.Room
 import com.example.bank_info_search.data.db.AppDatabase

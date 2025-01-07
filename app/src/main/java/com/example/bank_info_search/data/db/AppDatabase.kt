@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.bank_info_search.data.dao.HistoryDao
 import com.example.bank_info_search.data.models.HistoryItem
-import com.example.bank_info_search.utils.Converters
+import com.example.bank_info_search.domain.utils.Converters
 
 @Database(entities = [HistoryItem::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

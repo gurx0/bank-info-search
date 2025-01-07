@@ -1,4 +1,4 @@
-package com.example.bank_info_search.utils
+package com.example.bank_info_search.domain.utils
 
 import androidx.room.TypeConverter
 import com.example.bank_info_search.data.models.BinDomainModel

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import com.example.bank_info_search.di.appModule
+import com.example.bank_info_search.domain.di.appModule
 import com.example.bank_info_search.presentation.components.AppNavigation
 import com.example.bank_info_search.presentation.viewmodel.HistoryViewModel
 import com.example.bank_info_search.presentation.viewmodel.MainViewModel

@@ -40,7 +40,7 @@ class BinRepositoryImpl(
 
 
     override suspend fun getHistory(): List<HistoryItem> {
-        return historyDao.getAllHistory() // Вернем `HistoryItem` напрямую
+        return historyDao.getAllHistory()
     }
 
 
