@@ -9,6 +9,7 @@ import com.example.bank_info_search.domain.useCases.GetHistoryUseCase
 import com.example.bank_info_search.presentation.viewmodel.HistoryViewModel
 import com.example.bank_info_search.presentation.viewmodel.MainViewModel
 import com.example.bank_info_search.domain.network.RetrofitClient
+import com.example.bank_info_search.presentation.viewmodel.ThemeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -19,5 +20,6 @@ val appModule = module {
     factory { GetBinDetailsUseCase(get()) }
     factory { GetHistoryUseCase(get()) }
     viewModel { MainViewModel(get()) }
-    viewModel { HistoryViewModel(get()) }
+    viewModel { HistoryViewModel(get())}
+    viewModel { ThemeViewModel() }
 }
