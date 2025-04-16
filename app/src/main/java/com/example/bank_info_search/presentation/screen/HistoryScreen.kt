@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.bank_info_search.data.models.HistoryItem
 import com.example.bank_info_search.data.models.BinDomainModel
 import com.example.bank_info_search.presentation.viewmodel.HistoryViewModel
+import androidx.core.net.toUri
 
 @Composable
 fun HistoryScreen(viewModel: HistoryViewModel) {
@@ -102,7 +103,7 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
-                    val uri = Uri.parse("geo:${country.latitude},${country.longitude}")
+                    val uri = "geo:${country.latitude},${country.longitude}".toUri()
                     val intent = Intent(Intent.ACTION_VIEW, uri)
                     context.startActivity(intent)
                 }
@@ -116,7 +117,7 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://${bank.url}"))
+                    val intent = Intent(Intent.ACTION_VIEW, "https://${bank.url}".toUri())
                     context.startActivity(intent)
                 }
             )
@@ -126,7 +127,7 @@ fun ExpandedDetails(binResponse: BinDomainModel) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.clickable {
-                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${bank.phone}"))
+                    val intent = Intent(Intent.ACTION_DIAL, "tel:${bank.phone}".toUri())
                     context.startActivity(intent)
                 }
             )

@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bank_info_search.presentation.viewmodel.MainViewModel
+import androidx.core.net.toUri
 
 @Composable
 fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
@@ -82,7 +83,8 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                         Text(
                             text = "Open in Maps",
                             modifier = Modifier.clickable {
-                                val uri = Uri.parse("geo:${country.latitude?: "-"},${country.longitude?: "-"}")
+                                val uri =
+                                    "geo:${country.latitude ?: "-"},${country.longitude ?: "-"}".toUri()
                                 val intent = Intent(Intent.ACTION_VIEW, uri)
                                 context.startActivity(intent)
                             },
@@ -96,7 +98,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                     Text(
                         text = "Bank Website: ${bank.url?: "-"}",
                         modifier = Modifier.clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://${bank.url}"))
+                            val intent = Intent(Intent.ACTION_VIEW, "https://${bank.url}".toUri())
                             context.startActivity(intent)
                         },
                         color = MaterialTheme.colorScheme.primary,
@@ -106,7 +108,7 @@ fun MainScreen(viewModel: MainViewModel, onNavigateToHistory: () -> Unit) {
                     Text(
                         text = "Call Bank: ${bank.phone?: "-"}",
                         modifier = Modifier.clickable {
-                            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${bank.phone}"))
+                            val intent = Intent(Intent.ACTION_DIAL, "tel:${bank.phone}".toUri())
                             context.startActivity(intent)
                         },
                         color = MaterialTheme.colorScheme.primary,

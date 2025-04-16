@@ -24,7 +24,7 @@ class BinRepositoryImpl(
             try {
                 val response = apiService.getBinDetails(bin)
                 Log.d("request", "$response")
-                historyDao.insertHistory(HistoryItem(bin = bin, data = response)) // Сохраняем BIN
+                historyDao.insertHistory(HistoryItem(bin = bin, data = response))
                 return response.toDomainModel()
             } catch (e: retrofit2.HttpException) {
                 if (e.code() == 429 && retryCount < maxRetryAttempts) {
